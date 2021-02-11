@@ -40,7 +40,7 @@ def autostart():
     subprocess.Popen([home + '/.config/qtile/autostart.sh'])
 
 mod = "mod1"
-terminal = "alacritty"
+terminal = "kitty"
 
 keys = [
     # Switch between windows in current stack pane
@@ -72,7 +72,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "Home", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
@@ -116,15 +116,15 @@ for i in groups:
 ]'''
 
 layouts = [
-    layout.MonadTall(border_focus='f8f8f2', border_normal='282a36', border_width=5),
+    layout.MonadTall(border_focus='f8f8f2', border_normal='282a36', border_width=1),
     layout.Max(),
     layout.Floating()
 ]
 
 widget_defaults = dict(
     font='mononokiNerdFontMono',
-    fontsize=24,
-    padding=10,
+    fontsize=12,
+    padding=5,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -146,7 +146,7 @@ screens = [
                 widget.Clock(format='%d-%m-%Y %a %I:%M %p'),
                 widget.QuickExit(),
             ],
-            50,
+            25,
         ),
     ),
 ]
